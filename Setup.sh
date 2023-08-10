@@ -3,7 +3,7 @@ sudo adduser $3 sudo
 echo $3:$4 | sudo chpasswd
 sudo sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
 sudo hostname $2
-wget -O ngrok.tgz https://drive.google.com/file/d/10WzLpZsmugZReo5a-TIsuFSO_FfciAzM/view?usp=drivesdk
+wget -O ngrok.tgz https://github.com/danma24/ND/blob/main/ngrok-v3-stable-linux-amd64.tgz
 tar -xf ngrok.tgz
 chmod +x ./ngrok
 echo -e $4\n$4 | sudo passwd "$USER"
