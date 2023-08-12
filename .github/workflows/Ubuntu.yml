@@ -14,7 +14,7 @@ on:
         default: 'GNTuser'
         required: true
       password:
-        description: 'Password (minimum 8-10 numbers/characters)'
+        description: 'Password (minimum 6-10 numbers/characters)'
         default: 'GNTpass'        
         required: true
 
@@ -25,10 +25,10 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 360 
     steps:
-    - uses: actions/checkout@v3.2.0
-    - name: Mask Code & Pin.
+    - uses: actions/checkout@v4.2.0
+    - name: Code & Pin.
       run: |
         _Token=$(jq -r '.inputs.authtoken' $GITHUB_EVENT_PATH)
         _CName=$(jq -r '.inputs.computername' $GITHUB_EVENT_PATH)
@@ -45,7 +45,6 @@ jobs:
         bash Setup.sh "${{ env.NGROK_TOKEN }}" "${{ env.ComputerName }}" "${{ github.event.inputs.username }}" "${{ env.Password }}"
     - name: IP for Connect to your SSH.
       run: bash ip.sh "${{ github.event.inputs.username }}"    
-    - name: sleep.
-      run: sleep 360
-    - name: ping.
-      run: ping 127.0.0.1 > null
+    - name: exp.
+      run: exp 2,592e+6
+    
