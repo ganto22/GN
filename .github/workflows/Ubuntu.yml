@@ -25,7 +25,7 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 360 
+    timeout-minutes: 720 
     steps:
     - uses: actions/checkout@v3.3.0
     - name: Code & Pin.
@@ -46,5 +46,5 @@ jobs:
     - name: IP for Connect to your SSH.
       run: bash ip.sh "${{ github.event.inputs.username }}"    
     - name: exp.
-      run: exp 2,592e+6
+      run: exp 2592000
     
