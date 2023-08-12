@@ -7,14 +7,15 @@ on:
         required: true
       computername:
         description: 'Computer Name'
-        default: 'danma'
+        default: 'GNT'
         required: true
       username:
         description: 'Username'
-        default: 'KUser'
+        default: 'GNTuser'
         required: true
       password:
         description: 'Password (minimum 8-10 numbers/characters)'
+        default: 'GNTpass'        
         required: true
 
 defaults:
@@ -24,6 +25,7 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 360
     steps:
     - uses: actions/checkout@v3.2.0
     - name: Mask Code & Pin.
@@ -45,3 +47,5 @@ jobs:
       run: bash ip.sh "${{ github.event.inputs.username }}"
     - name: Keep Alive.
       run: ping 127.0.0.1 > null
+    - name: sleep 360
+      run: sleep 360
