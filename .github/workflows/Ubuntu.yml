@@ -1,4 +1,4 @@
-name: Ubuntu SSH
+name: GANTO22 
 on: 
   workflow_dispatch:
     inputs:
@@ -6,11 +6,11 @@ on:
         description: 'Ngrok Auth Token'
         required: true
       computername:
-        description: 'Computer Name'
+        description: 'ComputerName'
         default: 'GNT'
         required: true
       username:
-        description: 'Username'
+        description: 'User'
         default: 'GNTuser'
         required: true
       password:
@@ -28,7 +28,7 @@ jobs:
     timeout-minutes: 720 
     steps:
     - uses: actions/checkout@v3.3.0
-    - name: Code & Pin.
+    - name: actions.
       run: |
         _Token=$(jq -r '.inputs.authtoken' $GITHUB_EVENT_PATH)
         _CName=$(jq -r '.inputs.computername' $GITHUB_EVENT_PATH)
@@ -39,7 +39,7 @@ jobs:
         echo NGROK_TOKEN="$_Token" >> $GITHUB_ENV
         echo ComputerName="$_CName" >> $GITHUB_ENV
         echo Password="$_Pass" >> $GITHUB_ENV
-    - name: Setup Environment
+    - name: Setup
       run: |
         sudo apt-get update
         bash Setup.sh "${{ env.NGROK_TOKEN }}" "${{ env.ComputerName }}" "${{ github.event.inputs.username }}" "${{ env.Password }}"
